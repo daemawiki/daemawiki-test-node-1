@@ -26,9 +26,9 @@ class Subscriber(
 }
 
 internal fun ReactiveMongoTemplate.changeStream(init: ChangeStreamBuilder.() -> Unit): Flux<Document> {
-    val builder = ChangeStreamBuilder()
-        .apply(init)
+    val builder = ChangeStreamBuilder().apply(init)
+    val options = builder.build()
 
-    return changeStream(builder.build(), Document::class.java)
+    return changeStream(builder.getCollectionName(), options, Document::class.java)
         .mapNotNull { it.body }
 }
