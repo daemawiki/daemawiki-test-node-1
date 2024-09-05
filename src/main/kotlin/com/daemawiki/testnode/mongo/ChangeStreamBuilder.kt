@@ -1,6 +1,7 @@
 package com.daemawiki.testnode.mongo
 
 import com.mongodb.client.model.changestream.OperationType
+import org.bson.Document
 import org.springframework.data.mongodb.core.ChangeStreamOptions
 import org.springframework.data.mongodb.core.aggregation.Aggregation
 import org.springframework.data.mongodb.core.query.Criteria
@@ -26,6 +27,8 @@ class ChangeStreamBuilder {
             .filter(Aggregation.newAggregation(Aggregation.match(matchCriteria)))
             .build()
     }
+
+    fun getCollectionName() = collection
 
     internal enum class Keys {
         operationType
