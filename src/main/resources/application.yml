@@ -1,1 +1,10 @@
-spring.application.name=daemawiki-test-node-1
+spring:
+  application:
+    name: daemawiki-test-node-1
+
+  data:
+    mongodb:
+      uri: ${MONGO_URI}
+
+server:
+  port: ${APPLICATION_PORT}
