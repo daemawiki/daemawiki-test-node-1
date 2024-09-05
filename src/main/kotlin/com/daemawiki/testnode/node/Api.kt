@@ -2,6 +2,7 @@ package com.daemawiki.testnode.node
 
 import com.daemawiki.testnode.annotation.Api
 import org.bson.Document
+import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import reactor.core.publisher.Flux
@@ -14,7 +15,10 @@ class Api(
         val document: Document?
     )
 
-    @GetMapping("/{collectionType}/{_id}")
+    @GetMapping(
+        value = ["/{collectionType}/{_id}"],
+        produces = [MediaType.TEXT_EVENT_STREAM_VALUE]
+    )
     fun subscribe(
         @PathVariable collectionType: String,
         @PathVariable _id: String
