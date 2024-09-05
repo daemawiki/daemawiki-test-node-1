@@ -6,11 +6,11 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation
 import org.springframework.data.mongodb.core.query.Criteria
 
 class ChangeStreamBuilder {
-    private var collectionName: String = ""
+    private var collection: String = ""
     private val filters = mutableListOf<Criteria>()
     private var operationType: OperationType? = null
 
-    fun collection(name: String) = apply { collectionName = Collections.valueOf(name).str }
+    fun collection(name: String) = apply { collection = Collections.valueOf(name).str }
     fun filterBy(criteria: Criteria) = apply { filters.add(criteria) }
     fun operationType(type: OperationType) = apply { operationType = type }
 
