@@ -23,5 +23,5 @@ class Api(
         @PathVariable collectionType: String,
         @PathVariable _id: String
     ): Flux<Response> = subscriber.execute(collectionType, _id)
-            .map { Response(it) }
+        .map { Response(it) }
 }
